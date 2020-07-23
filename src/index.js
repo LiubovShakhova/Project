@@ -9,7 +9,9 @@ import 'fetch-polyfill';
 import 'element-remove-polyfill';
 
 import togglePopUp from './modules/togglePopUp';
-
+import sendForm from './modules/sendForm';
 
 //PopUp on link
 togglePopUp();
+// Send Forms
+sendForm();

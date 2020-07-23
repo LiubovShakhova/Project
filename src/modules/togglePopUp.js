@@ -16,7 +16,6 @@ const togglePopUp = () => {
 		popUpCall.style.opacity = counter;
   };
 	//------------------------------------
-	
   callBtn.forEach(elem => {
 		elem.addEventListener('click', () => {
 			popUpCall.style.display = 'block';
