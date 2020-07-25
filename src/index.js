@@ -12,6 +12,7 @@ import 'element-remove-polyfill';
 import togglePopUp from './modules/togglePopUp';
 import sendForm from './modules/sendForm';
 import accordion from './modules/accordion';
+import addMore from './modules/addMore';
 
 //PopUp on link
 togglePopUp();
@@ -19,3 +20,5 @@ togglePopUp();
 sendForm();
 // Accordion
 accordion();
+//Add more cards
+addMore();
