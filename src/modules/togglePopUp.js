@@ -4,7 +4,9 @@ const togglePopUp = () => {
 			userName = document.querySelector('input#name_1'),
 			userPhone = document.querySelector('input#phone_1'),
 			discountBtn = document.querySelectorAll('.discount-btn'),
-			popUpDiscount = document.querySelector('.popup-discount');
+			popUpDiscount = document.querySelector('.popup-discount'),
+			checkBtn = document.querySelectorAll('.check-btn'),
+			popUpCheck = document.querySelector('.popup-check');
   //анимация появления модального окна -----------------
 	let counter = 0;
 	const animate = () => {
@@ -16,6 +18,7 @@ const togglePopUp = () => {
 		counter += 0.05;
 		popUpCall.style.opacity = counter;
 		popUpDiscount.style.opacity = counter;
+		popUpCheck.style.opacity = counter;
 	};
 	//------------------------------------
 
@@ -54,7 +57,7 @@ const togglePopUp = () => {
 	};
 	openModal(callBtn, popUpCall);
 	openModal(discountBtn, popUpDiscount);
-
+	openModal(checkBtn, popUpCheck);
 };
 
 export default togglePopUp;
