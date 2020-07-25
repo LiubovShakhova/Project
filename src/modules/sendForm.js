@@ -75,7 +75,21 @@ const sendForm = () => {
           }
       });
 		});
-	});
+  });
+  //Validation
+  const validate = () => {
+    document.body.addEventListener('input', event => {
+      const target = event.target;
+      if (target.classList.contains('phone-user')) {
+        target.value = target.value.replace(/[^+\d]/g, '');
+      } else if (target.matches('#name_1') || target.matches('#name_2') || target.matches('#name_11')) {
+        target.value = target.value.replace(/[^а-яё\s]/ig, '');
+      } else if (target.matches('.user_quest')) {
+        target.value = target.value.replace(/[a-zA-Z]/ig, '');
+      }
+    });
+  };
+  validate();
 };
 
 export default sendForm;
