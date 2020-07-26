@@ -13,6 +13,7 @@ import togglePopUp from './modules/togglePopUp';
 import sendForm from './modules/sendForm';
 import accordion from './modules/accordion';
 import addMore from './modules/addMore';
+import constructor from './modules/constructor';
 
 //PopUp on link
 togglePopUp();
@@ -22,3 +23,5 @@ sendForm();
 accordion();
 //Add more cards
 addMore();
+//Calculator
+constructor();

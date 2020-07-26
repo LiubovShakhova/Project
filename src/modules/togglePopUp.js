@@ -6,7 +6,10 @@ const togglePopUp = () => {
 			discountBtn = document.querySelectorAll('.discount-btn'),
 			popUpDiscount = document.querySelector('.popup-discount'),
 			checkBtn = document.querySelectorAll('.check-btn'),
-			popUpCheck = document.querySelector('.popup-check');
+			popUpCheck = document.querySelector('.popup-check'),
+			consultationBtn = document.querySelectorAll('.consultation-btn'),
+			popUpConsultation = document.querySelector('.popup-consultation'),
+			constructBtn = document.querySelectorAll('button.construct-btn');
   //анимация появления модального окна -----------------
 	let counter = 0;
 	const animate = () => {
@@ -19,12 +22,14 @@ const togglePopUp = () => {
 		popUpCall.style.opacity = counter;
 		popUpDiscount.style.opacity = counter;
 		popUpCheck.style.opacity = counter;
+		popUpConsultation.style.opacity = counter;
 	};
 	//------------------------------------
 
 	const openModal = (btn, modal) => {
 		btn.forEach(elem => {
-			elem.addEventListener('click', () => {
+			elem.addEventListener('click', (e) => {
+				e.preventDefault();
 				modal.style.display = 'block';
 				if (!userName.hasAttribute('required') && !userPhone.hasAttribute('required')) {
 					userName.setAttribute('required', 'true');
@@ -58,6 +63,8 @@ const togglePopUp = () => {
 	openModal(callBtn, popUpCall);
 	openModal(discountBtn, popUpDiscount);
 	openModal(checkBtn, popUpCheck);
+	openModal(consultationBtn, popUpConsultation);
+	openModal(constructBtn, popUpDiscount);
 };
 
 export default togglePopUp;

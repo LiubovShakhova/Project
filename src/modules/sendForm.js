@@ -1,7 +1,10 @@
 const sendForm = () => {
   const errMessage = 'Ошибка при отправке формы. Пожалуйста, повторите попытку!',
       successMessage = 'Ваша заявка успешно отправлена. Мы скоро с Вами свяжемся!',
-      statusMessage = document.createElement('div');
+      statusMessage = document.createElement('div'),
+      lastForm = document.querySelector('.popup-content').children[0],
+      questionForm = document.querySelector('input.user_quest');
+
   statusMessage.style.cssText = `font-size: 1.5rem; font-weight: 700; padding: 5px; margin-top: 5px;`;
   
   //Preloader
@@ -33,9 +36,9 @@ const sendForm = () => {
   };
   
 	document.body.addEventListener('submit', event => {
-    if (event.target.tagName.toLowerCase() !== 'form') {
+    if (event.target.tagName.toLowerCase() !== 'form' || event.target.matches('#director-form')) {
 			return;
-		}
+    } 
     const form = event.target;
 		event.preventDefault();
     if (statusMessage) {
@@ -53,7 +56,10 @@ const sendForm = () => {
 		formData.forEach((val, key) => {
 			body[key] = val;
 		});
-
+    //Last form with a question
+    if (lastForm) {
+      body['question'] = questionForm.value;
+    }
     //Get Response
 		postData(body)
 			.then(response => {
@@ -73,7 +79,8 @@ const sendForm = () => {
           if (elem.tagName.toLowerCase() === 'input') {
             elem.value = '';
           }
-      });
+        });
+        questionForm.value = '';
 		});
   });
   //Validation
