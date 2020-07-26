@@ -19,7 +19,8 @@ const constructor = () => {
   }
   // Next Step with nextBtn
   for (let i = 0; i < nextBtn.length; i++) {
-    nextBtn[i].addEventListener('click', () => {
+    nextBtn[i].addEventListener('click', (e) => {
+      e.preventDefault();
       panels.forEach((elem) => {
         elem.classList.remove('in');
       });
