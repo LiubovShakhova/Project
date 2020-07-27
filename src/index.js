@@ -14,6 +14,7 @@ import sendForm from './modules/sendForm';
 import accordion from './modules/accordion';
 import addMore from './modules/addMore';
 import constructor from './modules/constructor';
+import calculator from './modules/calculator';
 
 //PopUp on link
 togglePopUp();
@@ -25,3 +26,4 @@ accordion();
 addMore();
 //Calculator
 constructor();
+calculator();
