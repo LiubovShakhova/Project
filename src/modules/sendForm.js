@@ -3,6 +3,7 @@ const sendForm = () => {
       successMessage = 'Ваша заявка успешно отправлена. Мы скоро с Вами свяжемся!',
       statusMessage = document.createElement('div'),
       lastForm = document.querySelector('.popup-content').children[0],
+      calcForm = document.querySelectorAll('.capture-form')[2],
       questionForm = document.querySelector('input.user_quest'),
       result = document.getElementById('calc-result'),
       checkbox = document.querySelectorAll('input[type="checkbox"]')[0],
@@ -58,26 +59,25 @@ const sendForm = () => {
 
     //Get FormData
 		const formData = new FormData(form);
-		const body = {};
-		formData.forEach((val, key) => {
-			body[key] = val;
-		});
-    //Last form with a question
-    if (lastForm) {
-      body['Вопрос'] = questionForm.value;
-      questionForm.value = '';
-    }
-    // Form with Calculator
-    /* if (popUpDiscount) {
-      body['Однокамерный'] = checkbox.checked;
-      body['Днище колодца'] = checkbox2.checked;
-      body['Итоговая сумма'] = result.value;
-      body['ПЕРВЫЙ КОЛОДЕЦ Диаметр'] = options[0].value;
-      body['ПЕРВЫЙ КОЛОДЕЦ Количество колец'] = options[1].value;
-      body['ВТОРОЙ КОЛОДЕЦ Диаметр'] = options[2].value;
-      body['ВТОРОЙ КОЛОДЕЦ Количество колец'] = options[3].value;
-      body[' расстояние до дома'] = accordionOne.querySelector('input[type="text"]').value;
-    }    */
+    let body = {};
+    formData.forEach((val, key) => {
+      body[key] = val;
+      if (questionForm.value !== '') {
+        body['question'] = questionForm.value;
+        questionForm.value = '';
+      } else if (event.target === calcForm) {
+        body['Однокамерный'] = checkbox.checked;
+        if (checkbox.checked === false) {
+          body['ВТОРОЙ КОЛОДЕЦ Диаметр'] = options[2].value;
+          body['ВТОРОЙ КОЛОДЕЦ Количество колец'] = options[3].value;
+        }
+        body['Днище колодца'] = checkbox2.checked;
+        body['Итоговая сумма'] = result.value;
+        body['ПЕРВЫЙ КОЛОДЕЦ Диаметр'] = options[0].value;
+        body['ПЕРВЫЙ КОЛОДЕЦ Количество колец'] = options[1].value; 
+        body['расстояние до дома'] = accordionOne.querySelector('input[type="text"]').value;
+      }
+    }); 
     //Get Response
 		postData(body)
 			.then(response => {
